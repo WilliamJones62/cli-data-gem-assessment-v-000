@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "champo_list"
+
+require "irb"
+IRB.start
