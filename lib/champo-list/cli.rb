@@ -1,5 +1,6 @@
 class ChampoList::CLI
-  def call
+
+  def run
     start
   end
 
