@@ -7,9 +7,10 @@ class Scrape
     doc.css("Table.wikitable").each do |team|
       name = team.css('.name').text
       profile = "https://en.wikipedia.org#{team.attr('href')}"
-      Team.new (name, profile)
+      Team.new(name, profile)
     end
-
+  end
+  
   def summary(url)
     doc = Nokogiri::HTML(open(url))
     puts "doc2 = #{doc}"

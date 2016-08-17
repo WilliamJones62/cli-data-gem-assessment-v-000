@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-RSpec.describe ChampoList::Team do
+RSpec.describe Team do
   context 'Class Methods' do
 
     describe '.all' do
       it 'returns an array of teams' do
         expect(teams).to be_an(Array)
-        expect(teams.first).to be_a(ChampoList::team)
+        expect(teams.first).to be_a(team)
       end
 
       it 'correctly scrapes names and urls for the teams' do
@@ -17,19 +17,19 @@ RSpec.describe ChampoList::Team do
 
     describe '.find' do
       it 'returns the team based on position in @@all' do
-        expect(ChampoList::team.find(1)).to eq(teams[0])
+        expect(team.find(1)).to eq(teams[0])
       end
     end
 
     describe '.find_by_name' do
       it 'returns the team based on the name' do
-        expect(ChampoList::team.find_by_name("Aston Villa")).to eq(teams[0])
+        expect(team.find_by_name("Aston Villa")).to eq(teams[0])
       end
     end
   end
 
   context 'Instance Methods' do
-    subject{ChampoList::team.new("Aston Villa", "https://en.wikipedia.org/wiki/Aston_Villa_F.C.")}
+    subject{team.new("Aston Villa", "https://en.wikipedia.org/wiki/Aston_Villa_F.C.")}
 
     describe '#name' do
       it 'has a name' do
