@@ -1,4 +1,4 @@
-class ChampoList::CLI
+class CLI
 
   def run
     start
@@ -8,7 +8,8 @@ class ChampoList::CLI
     puts ""
     puts "************* English Championship Teams *************"
     puts ""
-    ChampoList::Team.all.each.with_index(1) do |team, i|
+    Scrape.scrape_champo_list
+    Team.all.each.with_index(1) do |team, i|
       puts "#{i}. #{team.name}"
     end
     puts ""
@@ -43,11 +44,11 @@ class ChampoList::CLI
       if input == "list"
         list
       elsif input.to_i == 0
-        if team = ChampoList::Team.find_by_name(input)
+        if team = Team.find_by_name(input)
           print_team(team)
         end
       elsif input.to_i > 0
-        if team = ChampoList::Team.find(input.to_i)
+        if team = Team.find(input.to_i)
           print_team(team)
         end
       end
