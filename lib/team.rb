@@ -1,5 +1,6 @@
 class Team
   attr_accessor :name, :url, :summary, :owner, :manager
+  @@all = []
 
   def initialize(name = nil, url = nil)
     @name = name
@@ -9,8 +10,6 @@ class Team
 
   def team_details(team)
     @summary = Scrape.summary(team.url)
-    @manager = Scrape.manager(team.url)
-    @owner = Scrape.owner(team.url)
   end
 
   def save

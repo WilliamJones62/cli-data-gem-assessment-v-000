@@ -1,4 +1,6 @@
-require 'champo_list'
+require_relative "../lib/scrape.rb"
+require_relative "../lib/team.rb"
+require_relative "../lib/cli.rb"
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

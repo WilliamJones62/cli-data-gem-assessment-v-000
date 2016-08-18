@@ -8,7 +8,7 @@ class CLI
     puts ""
     puts "************* English Championship Teams *************"
     puts ""
-    Scrape.scrape_champo_list
+    Scrape.champo_list
     Team.all.each.with_index(1) do |team, i|
       puts "#{i}. #{team.name}"
     end
