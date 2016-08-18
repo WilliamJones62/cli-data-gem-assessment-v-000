@@ -8,8 +8,8 @@ class Team
     save
   end
 
-  def team_details(team)
-    @summary = Scrape.summary(team.url)
+  def self.team_details(team)
+    team.summary = Scrape.summary(team.url)
   end
 
   def save
@@ -21,16 +21,20 @@ class Team
   end
 
   def self.find(id)
-    team = self.all{id-1}
+    team = @@all[id-1]
     team_details(team)
+    team
   end
 
   def self.find_by_name(name)
     team = self.all.detect do |m|
       m.name.downcase.strip == name.downcase.strip ||
       m.name.split(" ").first.strip.downcase == name.downcase.strip
+    end
+    if team != nil
       team_details(team)
     end
+    team
   end
 
 end

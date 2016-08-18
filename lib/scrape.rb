@@ -23,7 +23,7 @@ class Scrape
     end
   end
 
-  def summary(url)
+  def self.summary(url)
     doc = Nokogiri::HTML(open(url))
 #    puts "doc2 = #{doc}"
     summary = doc.css("#mw-content-text p").text

@@ -11,8 +11,8 @@ RSpec.describe Team do
       end
 
       it 'correctly scrapes names and urls for the teams' do
-        expect(Team.all.first.name).to eq("Aston Villa F.C.")
-        expect(Team.all.first.url).to eq("/wiki/Aston_Villa_F.C.")
+        expect(Team.all.first.name).to eq("Aston Villa")
+        expect(Team.all.first.url).to eq("https://en.wikipedia.org/wiki/Aston_Villa_F.C.")
       end
     end
 

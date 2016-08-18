@@ -23,11 +23,6 @@ class CLI
     puts team.summary
     puts ""
 
-    puts "Owner: #{team.owner}"
-    puts ""
-
-    puts "Manager: #{team.manager}"
-    puts ""
   end
 
   def start
@@ -45,7 +40,12 @@ class CLI
         list
       elsif input.to_i == 0
         if team = Team.find_by_name(input)
-          print_team(team)
+          if team == nil
+            #bad name entered
+            puts "Name not found on list!"
+          else
+            print_team(team)
+          end
         end
       elsif input.to_i > 0
         if team = Team.find(input.to_i)
