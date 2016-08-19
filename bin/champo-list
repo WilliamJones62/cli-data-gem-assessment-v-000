@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/champo_list'
+require_relative '../config/environment'
 
-ChampoList::CLI.new.run
+CLI.new.run

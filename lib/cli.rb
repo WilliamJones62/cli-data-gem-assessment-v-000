@@ -8,10 +8,11 @@ class CLI
     puts ""
     puts "************* English Championship Teams *************"
     puts ""
-    Scrape.champo_list
     Team.all.each.with_index(1) do |team, i|
       puts "#{i}. #{team.name}"
     end
+    puts ""
+    puts "What team would you like more information on, by name or number?"
     puts ""
   end
 
@@ -22,34 +23,38 @@ class CLI
     puts ""
     puts team.summary
     puts ""
+    puts "Enter list to see the teams again."
+    puts "Enter exit to end the program."
+    puts ""
 
   end
 
   def start
+    Scrape.champo_list
     list
     input = nil
     while input != "exit"
       puts ""
-      puts "What team would you more information on, by name or number?"
-      puts ""
-      puts "Enter list to see the teams again."
-      puts "Enter exit to end the program."
-      puts ""
       input = gets.strip
-      if input == "list"
-        list
-      elsif input.to_i == 0
-        if team = Team.find_by_name(input)
+      if input != "exit"
+        if input == "list"
+          list
+        elsif input.to_i == 0
+          team = Team.find_by_name(input)
           if team == nil
-            #bad name entered
+          #bad name entered
             puts "Name not found on list!"
           else
             print_team(team)
           end
-        end
-      elsif input.to_i > 0
-        if team = Team.find(input.to_i)
-          print_team(team)
+        elsif input.to_i > 0
+          team = Team.find(input.to_i)
+          if team == nil
+          #bad name entered
+            puts "Number not found on list!"
+          else
+            print_team(team)
+          end
         end
       end
     end

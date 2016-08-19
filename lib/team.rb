@@ -22,7 +22,9 @@ class Team
 
   def self.find(id)
     team = @@all[id-1]
-    team_details(team)
+    if team != nil
+      team_details(team)
+    end
     team
   end
 
